@@ -83,7 +83,7 @@ onMounted(() => {
 
     <!-- Botão de Ver Todos -->
     <div class="products__footer animate-slide-up">
-      <BaseButton variant="primary">
+      <BaseButton variant="primary" @click="() => navigateTo('/todos-os-produtos')">
         Conhecer todos os produtos
       </BaseButton>
     </div>

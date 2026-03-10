@@ -4,6 +4,13 @@ import { ref, onMounted } from 'vue'
 const aboutSection = ref(null)
 const isVisible = ref(false)
 
+const scrollToProducts = () => {
+  const productsSection = document.getElementById('produtos')
+  if (productsSection) {
+    productsSection.scrollIntoView({ behavior: 'smooth' })
+  }
+}
+
 onMounted(() => {
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
@@ -31,18 +38,25 @@ onMounted(() => {
       
       <!-- Lado Esquerdo: Conteúdo de Texto -->
       <div class="about__content animate-slide-right">
-        <span class="about__label">NOSSA HISTÓRIA</span>
-        <h2 class="about__title">Sobre a Mesa &amp; Cia</h2>
-        <div class="about__text-group">
-          <p class="about__text">
-            Mesa &amp; Cia nasceu da paixão por receber bem e pela beleza dos detalhes. 
-            Cada composição é criada com carinho, buscando trazer elegância e personalidade 
-            para cada mesa.
-          </p>
-          <p class="about__text">
-            Acreditamos que momentos especiais merecem um cenário à altura, e é por isso 
-            que cuidamos de cada detalhe para tornar sua ocasião inesquecível.
-          </p>
+        <div class="about__text-wrapper">
+          <span class="about__label">NOSSA HISTÓRIA</span>
+          <h2 class="about__title">Sobre a Mesa &amp; Cia</h2>
+          <div class="about__text-group">
+            <p class="about__text">
+              Mesa &amp; Cia nasceu da paixão por receber bem e pela beleza dos detalhes. 
+              Cada composição é criada com carinho, buscando trazer elegância e personalidade 
+              para cada mesa.
+            </p>
+            <p class="about__text">
+              Acreditamos que momentos especiais merecem um cenário à altura, e é por isso 
+              que cuidamos de cada detalhe para tornar sua ocasião inesquecível.
+            </p>
+          </div>
+        </div>
+
+        <!-- Botão alinhado com a base da foto -->
+        <div class="about__actions animate-button-reveal">
+          <BaseButton variant="primary" @click="scrollToProducts">Conheça nosso trabalho</BaseButton>
         </div>
       </div>
 
@@ -97,28 +111,35 @@ onMounted(() => {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 8rem;
-  align-items: center;
+  align-items: stretch; /* Garante que as colunas tenham a mesma altura */
 }
 
 /* ─── Estados Iniciais das Animações ─── */
 .animate-slide-right {
   opacity: 0;
   transform: translateX(-60px);
-  transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1); /* Duração aumentada de 1.2s para 1.8s */
+  transition: all 1.8s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
 .animate-reveal {
   opacity: 0;
   transform: scale(0.9) translateY(40px);
-  transition: all 2s cubic-bezier(0.22, 1, 0.36, 1); /* Duração aumentada de 1.4s para 2s */
-  transition-delay: 0.5s; /* Delay aumentado para a foto entrar depois do título */
+  transition: all 2s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 0.5s;
 }
 
 .about__text-group {
   opacity: 0;
   transform: translateY(30px);
-  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1); /* Duração aumentada */
-  transition-delay: 1s; /* Delay aumentado para ser o último elemento a montar */
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 1s;
+}
+
+.animate-button-reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 1.5s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: 1.5s; /* Entra por último */
 }
 
 /* ─── Ativação das Animações ao Rolar ─── */
@@ -137,7 +158,18 @@ onMounted(() => {
   transform: translateY(0);
 }
 
+.about.is-active .animate-button-reveal {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* Lado Esquerdo */
+.about__content {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1.5rem 0; /* Pequeno ajuste para o botão não colar no fundo da seção */
+}
 .about__label {
   display: block;
   font-family: Arial, sans-serif;
