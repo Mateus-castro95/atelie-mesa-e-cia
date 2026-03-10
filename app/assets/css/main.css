@@ -1,0 +1,46 @@
+/* =============================================================
+   main.css — Estilos globais do site Leia Mesa & Cia
+   Contém: importação de fonte, reset base, fundo com noise e utilitários
+   ============================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap');
+
+/* ─── Reset base ────────────────────────────────────────────────
+   Remove margens/paddings padrão do browser e normaliza box-sizing
+   ──────────────────────────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+/* ─── Fundo global com efeito areia (noise) ─────────────────────
+   noise.png é um PNG com ruído sutil repetindo em tile sobre o bege
+   O arquivo deve estar em /public/img/noise.png
+   ──────────────────────────────────────────────────────────── */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  /* Cor de fundo base — bege areia */
+  background-color: #E8E2D9;
+
+  /* Textura de noise sobreposta */
+  background-image: url('/img/noise.png');
+  background-repeat: repeat;
+  background-size: auto;
+
+  /* Fonte e cor de texto padrão */
+  font-family: 'Cormorant Garamond', Georgia, serif;
+  font-weight: 400;
+  color: #5D3136;
+
+  /* Renderização mais suave das fontes */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+
+  line-height: 1.6;
+}
