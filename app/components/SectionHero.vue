@@ -121,15 +121,28 @@ const scrollToProducts = () => {
 .hero__content-block {
   width: 42%;
   background-color: #B5A49A; /* O Marrom/Tan do modelo */
-  background-image: url('/img/noise.png');
-  background-repeat: repeat;
-  background-blend-mode: multiply; /* Crucial: mistura a cor com o noise */
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 0 4rem;
   position: relative;
   z-index: 10;
+  overflow: hidden; /* Para conter o noise do ::after */
+}
+
+/* Camada de Noise (Mais robusta para produção) */
+.hero__content-block::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/img/noise.png');
+  background-repeat: repeat;
+  opacity: 0.4; /* Ajuste para dar o tom certo de textura */
+  pointer-events: none;
+  z-index: -1;
 }
 
 /* ─── Bloco de Imagem (Lado Direito do Quadrado) ─── */
