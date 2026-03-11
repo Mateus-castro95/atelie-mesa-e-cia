@@ -28,9 +28,9 @@ const treats = [
     image: '/img/pao-integral.jpg' 
   },
   { 
-    name: 'Pão Misto', 
-    description: 'A união equilibrada de sabores em uma massa artesanal exclusiva.', 
-    image: '/img/pao-misto.jpg' 
+    name: 'Esfirra Aberta', 
+    description: 'Sabor autêntico com massa leve e recheios fresquinhos feitos na hora.', 
+    image: '/img/esfirra-aberta.jpg' 
   }
 ]
 </script>
