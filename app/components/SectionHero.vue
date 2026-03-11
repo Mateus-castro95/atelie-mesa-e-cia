@@ -305,10 +305,5 @@ const scrollToProducts = () => {
     border: 10px solid #F2EDE4; /* Bege suave em vez de branco puro */
     box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.15);
   }
-
-  /* Ajuste das esferas para mobile para não poluir muito */
-  .hero__sphere--1 { left: 10%; bottom: 10%; width: 40px; height: 40px; }
-  .hero__sphere--3 { right: 5%; top: 10%; width: 60px; height: 60px; }
-  .hero__sphere--2 { display: none; }
 }
 </style>

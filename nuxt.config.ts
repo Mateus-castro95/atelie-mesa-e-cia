@@ -4,6 +4,15 @@ export default defineNuxtConfig({
   devtools: { enabled: false },
   modules: ['@nuxtjs/tailwindcss'],
 
+  app: {
+    head: {
+      title: 'Ateliê Mesa & Cia',
+      link: [
+        { rel: 'icon', type: 'image/png', href: '/favicon.png' }
+      ]
+    }
+  },
+
   // CSS global aplicado em todas as páginas
   css: ['~/assets/css/main.css'],
 })
