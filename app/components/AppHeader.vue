@@ -42,7 +42,7 @@ onUnmounted(() => {
   >
     <div class="header__container">
       <!-- Logo/Ícone no canto esquerdo -->
-      <div class="header__logo">
+      <NuxtLink to="/" class="header__logo" aria-label="Ir para o início">
         <div class="logo-circle">
           <svg viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
             <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" stroke-width="2" />
@@ -51,7 +51,7 @@ onUnmounted(() => {
             <text x="50" y="70" text-anchor="middle" font-family="Arial" font-size="8" letter-spacing="1" fill="currentColor">MESA & CIA</text>
           </svg>
         </div>
-      </div>
+      </NuxtLink>
 
       <!-- Menu Hambúrguer no canto direito -->
       <button 
